@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Defaults;
 
 namespace municipalities_basic_reports
 {
@@ -23,10 +26,23 @@ namespace municipalities_basic_reports
     public partial class MainWindow : Window
     {
         private List<Municipality> municipalities;
+        private SeriesCollection SeriesCollection;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            SeriesCollection = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title = "Municipio",
+                    Values = new ChartValues<ObservableValue> {new ObservableValue(10)},
+                    DataLabels = true
+                },
+            };
+
+            DataContext = this;
 
             municipalities = new List<Municipality>();
 
@@ -40,10 +56,10 @@ namespace municipalities_basic_reports
         {
             var reader = new StreamReader(File.OpenRead(filePath));
             var line = reader.ReadLine();
+            line = reader.ReadLine();
 
-            while(line != "Fuente: DANE.,,,,")
+            while (line != "Fuente: DANE.,,,,")
             {
-                line = reader.ReadLine();
                 var data = line.Split('\u002C');
                 string departmentCode = data[0];
                 string municipalityCode = data[1];
@@ -52,7 +68,10 @@ namespace municipalities_basic_reports
                 string municipalityType = data[4];
 
                 municipalities.Add(new Municipality(municipalityName, municipalityCode, municipalityType, departmentCode, departmentName));
+                line = reader.ReadLine();
+
             }
+            reportGrid.ItemsSource = municipalities;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,6 +86,7 @@ namespace municipalities_basic_reports
             if (openFileDialog1.ShowDialog() == true)
             {
                 string selectedFileName = openFileDialog1.FileName;
+                readFile(selectedFileName);
             }
 
         }
@@ -78,7 +98,27 @@ namespace municipalities_basic_reports
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            char selectedCharacter = (char)ComboBox.SelectedItem;
+            modifyTable(selectedCharacter);
 
+        }
+
+        private void modifyTable (char initial)
+        {
+            List<Municipality> newList = new List<Municipality>();
+            foreach (Municipality element in municipalities)
+            {
+                if (element.departmentName.StartsWith(initial))
+                {
+                    newList.Add(element);
+                }
+            }
+            reportGrid.ItemsSource = newList;
+        }
+
+        private void resetTable(object sender, RoutedEventArgs e)
+        {
+            reportGrid.ItemsSource = municipalities;
         }
     }
 }

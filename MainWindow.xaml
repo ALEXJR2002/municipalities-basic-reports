@@ -3,23 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:municipalities_basic_reports"
         mc:Ignorable="d"
         Title="Municipalities Reports" Height="691" Width="800">
     <Grid Margin="0,0,0,-6">
-        <Button Content="Choose a File" HorizontalAlignment="Left" Margin="182,42,0,0" VerticalAlignment="Top" Click="Button_Click" Height="22" Width="97"/>
-        <DataGrid x:Name="reportGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="182,86,182,367" SelectionChanged="DataGrid_SelectionChanged">
+        <Button Content="Choose a File" HorizontalAlignment="Left" Margin="130,42,0,0" VerticalAlignment="Top" Click="Button_Click" Height="22" Width="102"/>
+        <DataGrid x:Name="reportGrid" Margin="130,102,130,351" AutoGenerateColumns="False" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="# Dep."></DataGridTextColumn>
-                <DataGridTextColumn Header="# Mun."></DataGridTextColumn>
-                <DataGridTextColumn Header="Dep."></DataGridTextColumn>
-                <DataGridTextColumn Header="Mun."></DataGridTextColumn>
-                <DataGridTextColumn Header="Type"></DataGridTextColumn>
+                <DataGridTextColumn Header="Código Departamento" Binding="{Binding Path=departmentCode}"/>
+                <DataGridTextColumn Header="Código Municipio" Binding="{Binding Path=municipalityCode}"/>
+                <DataGridTextColumn Header="Departamento" Binding="{Binding Path=departmentName}"/>
+                <DataGridTextColumn Header="Municipio" Binding="{Binding Path=municipalityName}"/>
+                <DataGridTextColumn Header="Tipo" Binding="{Binding Path=municipalityType}"/>
 
             </DataGrid.Columns>
         </DataGrid>
-        <ComboBox Name="ComboBox" HorizontalAlignment="Left" Margin="498,42,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Canvas Margin="230,341,230,97"/>
-
+        <ComboBox Name="ComboBox" HorizontalAlignment="Left" Margin="489,42,0,0" VerticalAlignment="Top" Width="50" SelectionChanged="ComboBox_SelectionChanged" Height="22"/>
+        <Button Content="Reset" HorizontalAlignment="Left" Margin="568,42,0,0" VerticalAlignment="Top" Click="resetTable" Height="22" Width="102"/>
+        <lvc:PieChart Margin="0,362,0,0" LegendLocation="Right" Hoverable="True" Series="{Binding SeriesCollection}">
+            
+        </lvc:PieChart>   
     </Grid>
 </Window>
