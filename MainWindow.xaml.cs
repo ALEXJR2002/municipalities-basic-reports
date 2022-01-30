@@ -53,6 +53,7 @@ namespace municipalities_basic_reports
 
                 municipalities.Add(new Municipality(municipalityName, municipalityCode, municipalityType, departmentCode, departmentName));
             }
+            reportGrid.ItemsSource = municipalities;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,6 +68,7 @@ namespace municipalities_basic_reports
             if (openFileDialog1.ShowDialog() == true)
             {
                 string selectedFileName = openFileDialog1.FileName;
+                readFile(selectedFileName);
             }
 
         }
