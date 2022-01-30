@@ -22,9 +22,20 @@ namespace municipalities_basic_reports
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        /// <summary>
+        /// private List<Municipality> municipalities;
+        /// </summary>
+
         public MainWindow()
         {
             InitializeComponent();
+            //municipalities = (Municipality) new List<Municipality>();
+        }
+
+        private void readFile(string filePath)
+        {
+            var reader = new StreamReader(File.OpenRead(filePath));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
