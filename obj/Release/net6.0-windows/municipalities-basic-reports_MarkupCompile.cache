@@ -1,15 +1,26 @@
 ﻿municipalities-basic-reports
 
 
+<<<<<<< HEAD
 winexe
 C#
 .cs
 C:\Users\Alex Jr\source\repos\municipalities-basic-reports\obj\Release\net6.0-windows\
+=======
+exe
+C#
+.cs
+C:\Users\Usuario\Source\Repos\municipalities-basic-reports\obj\Release\net6.0-windows\
+>>>>>>> 33b2cea4e011b661f7023196f50207e5a551805b
 municipalities_basic_reports
 none
 false
 TRACE;RELEASE;NET;NET6_0;NETCOREAPP
+<<<<<<< HEAD
 C:\Users\Alex Jr\source\repos\municipalities-basic-reports\App.xaml
+=======
+C:\Users\Usuario\Source\Repos\municipalities-basic-reports\App.xaml
+>>>>>>> 33b2cea4e011b661f7023196f50207e5a551805b
 11407045341
 
 4248061568
