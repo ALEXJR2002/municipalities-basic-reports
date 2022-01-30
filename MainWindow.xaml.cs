@@ -25,6 +25,10 @@ namespace municipalities_basic_reports
         public MainWindow()
         {
             InitializeComponent();
+            for (char character = 'A'; character <= 'Z'; character++)
+            {
+                ComboBox.Items.Add(character);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,8 +43,17 @@ namespace municipalities_basic_reports
             if (openFileDialog1.ShowDialog() == true)
             {
                 string selectedFileName = openFileDialog1.FileName;
-                Console.Write(selectedFileName);
             }
+
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }

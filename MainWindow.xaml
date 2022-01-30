@@ -7,8 +7,18 @@
         mc:Ignorable="d"
         Title="Municipalities Reports" Height="450" Width="800">
     <Grid>
-        <Button Content="Choose a File" HorizontalAlignment="Center" Margin="0,43,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Label Content="Texto&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,132,0,0" VerticalAlignment="Top"/>
+        <Button Content="Choose a File" HorizontalAlignment="Left" Margin="182,42,0,0" VerticalAlignment="Top" Click="Button_Click" Height="22" Width="97"/>
+        <DataGrid x:Name="reportGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="182,86,182,204" SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="# Dep."></DataGridTextColumn>
+                <DataGridTextColumn Header="# Mun."></DataGridTextColumn>
+                <DataGridTextColumn Header="Dep."></DataGridTextColumn>
+                <DataGridTextColumn Header="Mun."></DataGridTextColumn>
+                <DataGridTextColumn Header="Type"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox Name="ComboBox" HorizontalAlignment="Left" Margin="498,42,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
 
     </Grid>
 </Window>
