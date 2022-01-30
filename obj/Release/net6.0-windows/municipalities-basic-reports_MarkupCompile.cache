@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\Usuario\source\repos\municipalities-basic-reports\obj\Debug\net6.0-windows\
+C:\Users\Usuario\source\repos\municipalities-basic-reports\obj\Release\net6.0-windows\
 municipalities_basic_reports
 none
 false
-TRACE;DEBUG;NET;NET6_0;NETCOREAPP
+TRACE;RELEASE;NET;NET6_0;NETCOREAPP
 C:\Users\Usuario\source\repos\municipalities-basic-reports\App.xaml
 11407045341
 
