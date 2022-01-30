@@ -26,23 +26,12 @@ namespace municipalities_basic_reports
     public partial class MainWindow : Window
     {
         private List<Municipality> municipalities;
-        private SeriesCollection SeriesCollection;
+
+        public SeriesCollection SeriesCollection { get; private set; }
 
         public MainWindow()
         {
             InitializeComponent();
-
-            SeriesCollection = new SeriesCollection
-            {
-                new PieSeries
-                {
-                    Title = "Municipio",
-                    Values = new ChartValues<ObservableValue> {new ObservableValue(10)},
-                    DataLabels = true
-                },
-            };
-
-            DataContext = this;
 
             municipalities = new List<Municipality>();
 
@@ -50,6 +39,19 @@ namespace municipalities_basic_reports
             {
                 ComboBox.Items.Add(character);
             }
+        }
+
+        private int typeCounter (string type)
+        {
+            int counter = 0;
+            foreach (Municipality element in municipalities)
+            {
+                if (element.municipalityType.Equals(type))
+                {
+                    counter++;
+                }
+            }
+            return counter;
         }
 
         private void readFile(string filePath)
@@ -72,6 +74,30 @@ namespace municipalities_basic_reports
 
             }
             reportGrid.ItemsSource = municipalities;
+
+            SeriesCollection = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title = "Municipio",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(typeCounter("Municipio")) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Área no municipalizada",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(typeCounter("Área no municipalizada")) },
+                    DataLabels = true
+                },
+                new PieSeries
+                {
+                    Title = "Isla",
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(typeCounter("Isla")) },
+                    DataLabels = true
+                }
+            };
+
+            DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
