@@ -2,11 +2,11 @@
 
 public class Municipality
 {
-	private string municipalityName;
-	private string municipalityCode;
-	private string municipalityType;
-	private string departmentCode;
-	private string departmentName;
+	public string municipalityName { get; set; }
+	public string municipalityCode { get; set; }
+	public string municipalityType { get; set; }
+	public string departmentCode { get; set; }
+	public string departmentName { get; set; }
 	public Municipality(string mN, string mC, string mT, string dC, string dN)
 	{
 		municipalityName = mN;
