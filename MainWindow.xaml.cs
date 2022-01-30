@@ -22,13 +22,27 @@ namespace municipalities_basic_reports
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        /// <summary>
+        /// private List<Municipality> municipalities;
+        /// </summary>
+
         public MainWindow()
         {
             InitializeComponent();
+<<<<<<< HEAD
+            //municipalities = (Municipality) new List<Municipality>();
+        }
+
+        private void readFile(string filePath)
+        {
+            var reader = new StreamReader(File.OpenRead(filePath));
+=======
             for (char character = 'A'; character <= 'Z'; character++)
             {
                 ComboBox.Items.Add(character);
             }
+>>>>>>> 9f49ec2c1b074015220ac1ea418d4e7a3e4f6e0d
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
